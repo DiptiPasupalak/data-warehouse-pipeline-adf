@@ -1,0 +1,58 @@
+{
+	"name": "file_upload_info",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDW",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlDWTable",
+		"schema": [
+			{
+				"name": "source_file_name",
+				"type": "varchar"
+			},
+			{
+				"name": "Transaction_Id",
+				"type": "varchar"
+			},
+			{
+				"name": "Event_Name",
+				"type": "varchar"
+			},
+			{
+				"name": "Ticket_Count",
+				"type": "varchar"
+			},
+			{
+				"name": "Total_Amount",
+				"type": "varchar"
+			},
+			{
+				"name": "channel",
+				"type": "varchar"
+			},
+			{
+				"name": "First_Name",
+				"type": "varchar"
+			},
+			{
+				"name": "Last_Name",
+				"type": "varchar"
+			},
+			{
+				"name": "Office_Location",
+				"type": "varchar"
+			},
+			{
+				"name": "Created_Date",
+				"type": "varchar"
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "file_upload_info"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

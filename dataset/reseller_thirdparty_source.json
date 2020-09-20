@@ -1,0 +1,61 @@
+{
+	"name": "reseller_thirdparty_source",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "EventBlobStorage",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"folderPath": "sales",
+				"container": "eventmanagementcontainer"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Transaction_Id",
+				"type": "String"
+			},
+			{
+				"name": "Event_Name",
+				"type": "String"
+			},
+			{
+				"name": "Ticket_Count",
+				"type": "String"
+			},
+			{
+				"name": "Total_Amount",
+				"type": "String"
+			},
+			{
+				"name": "channel",
+				"type": "String"
+			},
+			{
+				"name": "First_Name",
+				"type": "String"
+			},
+			{
+				"name": "Last_Name",
+				"type": "String"
+			},
+			{
+				"name": "Office_Location",
+				"type": "String"
+			},
+			{
+				"name": "Created_Date",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

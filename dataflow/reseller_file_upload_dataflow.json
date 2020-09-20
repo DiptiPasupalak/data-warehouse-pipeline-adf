@@ -1,0 +1,28 @@
+{
+	"name": "reseller_file_upload_dataflow",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "reseller_thirdparty_source",
+						"type": "DatasetReference"
+					},
+					"name": "sourcefile"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "file_upload_info",
+						"type": "DatasetReference"
+					},
+					"name": "loadtable"
+				}
+			],
+			"transformations": [],
+			"script": "source(output(\n\t\tTransaction_Id as short,\n\t\tEvent_Name as string,\n\t\tTicket_Count as short,\n\t\tTotal_Amount as short,\n\t\tchannel as string,\n\t\tFirst_Name as string,\n\t\tLast_Name as string,\n\t\tOffice_Location as string,\n\t\tCreated_Date as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: true,\n\tmoveFiles: ['sales','history'],\n\trowUrlColumn: 'source_file_name',\n\twildcardPaths:['sales']) ~> sourcefile\nsourcefile sink(input(\n\t\tsource_file_name as string,\n\t\tTransaction_Id as string,\n\t\tEvent_Name as string,\n\t\tTicket_Count as string,\n\t\tTotal_Amount as string,\n\t\tchannel as string,\n\t\tFirst_Name as string,\n\t\tLast_Name as string,\n\t\tOffice_Location as string,\n\t\tCreated_Date as string\n\t),\n\tallowSchemaDrift: false,\n\tvalidateSchema: false,\n\tdeletable:false,\n\tinsertable:true,\n\tupdateable:false,\n\tupsertable:false,\n\ttruncate:true,\n\tformat: 'table',\n\tstaged: true,\n\tpreSQLs:['truncate table dbo.file_upload_info'],\n\tmapColumn(\n\t\tsource_file_name,\n\t\tTransaction_Id,\n\t\tEvent_Name,\n\t\tTicket_Count,\n\t\tTotal_Amount,\n\t\tchannel,\n\t\tFirst_Name,\n\t\tLast_Name,\n\t\tOffice_Location,\n\t\tCreated_Date\n\t),\n\tskipDuplicateMapInputs: true,\n\tskipDuplicateMapOutputs: true) ~> loadtable"
+		}
+	}
+}
