@@ -1,0 +1,4 @@
+﻿Transaction_Id,Event_Name,Ticket_Count,Total_Amount,channel,First_Name,Last_Name,Office_Location,Created_Date
+10004,diwalimusicdhamaka,10,100,Mobile,peter,dsouza,marathali,20/09/2020
+10005,diwalimusicdhamaka,10,100,Web,amar,panty,marathali,20/09/2020
+10006,diwalimusicdhamaka,10,100,Mobile,azad,rahim,marathali,20/09/2020
